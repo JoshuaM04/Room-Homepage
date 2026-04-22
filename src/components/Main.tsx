@@ -37,8 +37,8 @@ function PhoneMain() {
 
 export default function Main() {
     return (
-        <>
+        <main>
             <PhoneMain />
-        </>
+        </main>
     )
 }

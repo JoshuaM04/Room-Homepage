@@ -11,8 +11,8 @@ function PhoneFooter() {
 
 export default function Footer() {
     return (
-        <>
+        <footer>
             <PhoneFooter />
-        </>
+        </footer>
     )
 }
