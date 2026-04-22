@@ -2,36 +2,42 @@ import iconClose from "../assets/images/icon-close.svg";
 import iconHamburger from "../assets/images/icon-hamburger.svg";
 import iconAngleLeft from "../assets/images/icon-angle-left.svg";
 import iconAngleRight from "../assets/images/icon-angle-right.svg";
+import { shiftGalleryLeft, shiftGalleryRight } from "../utils/helper";
 import { useState } from 'react';
 
 interface LayoutProps {
     isMenuHidden: boolean;
     setIsMenuHidden: Function;
+    isHeadingHidden: boolean;
+    setIsHeadingHidden: Function;
+    galleryList: Array<string>;
+    index: number;
+    setIndex: Function;
 }
 
-function PhoneHeader({isMenuHidden, setIsMenuHidden}: LayoutProps) {
+function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadingHidden, galleryList, index, setIndex}: LayoutProps) {
     return (
-        <section className="[ header_parent_container ] [ p-5 ] [ min-h-90 ] [ bg-[url(assets/images/mobile-image-hero-1.jpg)] bg-center bg-no-repeat bg-cover ] [ relative ]">
-            <nav className="[ flex items-center justify-between ] [ p-[40px_20px_40px_20px] ]" hidden={isMenuHidden} aria-hidden={isMenuHidden}>
-                <button aria-label="Drop-down menu"><img src={iconClose} aria-hidden="true" /></button>
+        <section className={`[ header_parent_container ] [ p-5 ] [ min-h-90 ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}>
+            <nav id="drop-down menu" className="[ flex items-center justify-between ] [ bg-white ] [ p-[40px_20px_40px_20px] -m-5 ]" hidden={isMenuHidden} aria-hidden={isMenuHidden} aria-expanded={!(isMenuHidden)}>
+                <button onClick={() => { setIsMenuHidden(true); setIsHeadingHidden(false); }} aria-controls="drop-down menu" aria-label="Drop-down menu"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></button>
 
-                <ul className="inline-flex gap-10">
-                    <li>Home</li>
-                    <li>Shop</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                <ul className="[ inline-flex gap-6 ] [ font-bold ]">
+                    <li>home</li>
+                    <li>shop</li>
+                    <li>about</li>
+                    <li>contact</li>
                 </ul>
             </nav>
             
-            <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]">
-                <button><img src={iconHamburger} aria-hidden="true" /></button>
+            <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]" hidden={isHeadingHidden} aria-hidden={isHeadingHidden} aria-haspopup="true">
+                <button onClick={() => { setIsMenuHidden(false); setIsHeadingHidden(true); }} aria-controls="drop-down menu"><img src={iconHamburger} aria-hidden="true" /></button>
                 <h1>room</h1>
                 <div className="hidden_alignment_container w-5 h-6" aria-hidden="true"></div>
             </div>
 
             <div className="[ flex ] [ w-fit ] [ absolute bottom-0 right-0 ]">
-                <button className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 ]" aria-label="Move back through gallery selection"><img src={iconAngleLeft} aria-hidden="true" /></button>
-                <button className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 ]" aria-label="Move forward through gallery selection"><img src={iconAngleRight} aria-hidden="true" /></button>
+                <button onClick={() => shiftGalleryLeft(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 hover:cursor-pointer ]" aria-label="Move back through gallery selection"><img src={iconAngleLeft} aria-hidden="true" /></button>
+                <button onClick={() => shiftGalleryRight(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 hover: cursor-pointer ]" aria-label="Move forward through gallery selection"><img src={iconAngleRight} aria-hidden="true" /></button>
             </div>
             
         </section>
@@ -40,12 +46,20 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden}: LayoutProps) {
 
 export default function Header() {
     const [isMenuHidden, setIsMenuHidden] = useState(true);
+    const [isHeadingHidden, setIsHeadingHidden] = useState(false);
+    const galleryList = ["bg-[url(src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-3.jpg)]"];
+    const [index, setIndex] = useState(0);
 
     return (
         <header>
             <PhoneHeader 
                 isMenuHidden={isMenuHidden}
                 setIsMenuHidden={setIsMenuHidden}
+                isHeadingHidden={isHeadingHidden}
+                setIsHeadingHidden={setIsHeadingHidden}
+                galleryList={galleryList}
+                index={index}
+                setIndex={setIndex}
             />
         </header>
     )
