@@ -4,6 +4,8 @@ export function shiftGalleryLeft(index: number, setIndex: Function) {
     } else {
         setIndex(index - 1);
     }
+
+    shareIndex(index);
 }
 
 export function shiftGalleryRight(index: number, setIndex: Function) {
@@ -12,4 +14,10 @@ export function shiftGalleryRight(index: number, setIndex: Function) {
     } else {
         setIndex(index + 1);
     }
+
+    shareIndex(index);
+}
+
+function shareIndex(index: number) {
+    return index;
 }

@@ -17,9 +17,9 @@ interface LayoutProps {
 
 function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadingHidden, galleryList, index, setIndex}: LayoutProps) {
     return (
-        <section className={`[ header_parent_container ] [ p-5 ] [ min-h-90 ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}>
+        <section className={`[ header_parent_container ] [ p-5 ] [ h-full ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}>
             <nav id="drop-down menu" className="[ flex items-center justify-between ] [ bg-white ] [ p-[40px_20px_40px_20px] -m-5 ]" hidden={isMenuHidden} aria-hidden={isMenuHidden} aria-expanded={!(isMenuHidden)}>
-                <button onClick={() => { setIsMenuHidden(true); setIsHeadingHidden(false); }} aria-controls="drop-down menu" aria-label="Drop-down menu"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></button>
+                <button onClick={() => { setIsMenuHidden(true); setIsHeadingHidden(false); }} aria-controls="drop-down menu" aria-label="Close drop-down menu"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></button>
 
                 <ul className="[ inline-flex gap-6 ] [ font-bold ]">
                     <li>home</li>
@@ -29,17 +29,16 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
                 </ul>
             </nav>
             
-            <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]" hidden={isHeadingHidden} aria-hidden={isHeadingHidden} aria-haspopup="true">
-                <button onClick={() => { setIsMenuHidden(false); setIsHeadingHidden(true); }} aria-controls="drop-down menu"><img src={iconHamburger} aria-hidden="true" /></button>
+            <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]" hidden={isHeadingHidden} aria-hidden={isHeadingHidden}>
+                <button onClick={() => { setIsMenuHidden(false); setIsHeadingHidden(true); }} aria-label="Open drop-down menu" aria-controls="drop-down menu" aria-haspopup="true"><img src={iconHamburger} aria-hidden="true" /></button>
                 <h1>room</h1>
                 <div className="hidden_alignment_container w-5 h-6" aria-hidden="true"></div>
             </div>
 
             <div className="[ flex ] [ w-fit ] [ absolute bottom-0 right-0 ]">
-                <button onClick={() => shiftGalleryLeft(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 hover:cursor-pointer ]" aria-label="Move back through gallery selection"><img src={iconAngleLeft} aria-hidden="true" /></button>
-                <button onClick={() => shiftGalleryRight(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ hover:bg-gray-600 hover: cursor-pointer ]" aria-label="Move forward through gallery selection"><img src={iconAngleRight} aria-hidden="true" /></button>
+                <button onClick={() => shiftGalleryLeft(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ active:bg-gray-600 ]" aria-label="Move back through gallery selection"><img src={iconAngleLeft} aria-hidden="true" /></button>
+                <button onClick={() => shiftGalleryRight(index, setIndex)} className="[ flex justify-center items-center ] [ bg-black ] [ w-15 h-15 ] [ active:bg-gray-600 ]" aria-label="Move forward through gallery selection"><img src={iconAngleRight} aria-hidden="true" /></button>
             </div>
-            
         </section>
     )
 }
@@ -51,7 +50,7 @@ export default function Header() {
     const [index, setIndex] = useState(0);
 
     return (
-        <header>
+        <header className="max-md:h-90 -m-10">
             <PhoneHeader 
                 isMenuHidden={isMenuHidden}
                 setIsMenuHidden={setIsMenuHidden}
