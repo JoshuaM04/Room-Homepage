@@ -15,6 +15,11 @@ interface LayoutProps {
     setIndex: Function;
 }
 
+interface HeaderProps {
+    index: number;
+    setIndex: Function;
+}
+
 function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadingHidden, galleryList, index, setIndex}: LayoutProps) {
     return (
         <section className={`[ header_parent_container ] [ p-5 ] [ h-full ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}>
@@ -31,7 +36,7 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
             
             <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]" hidden={isHeadingHidden} aria-hidden={isHeadingHidden}>
                 <button onClick={() => { setIsMenuHidden(false); setIsHeadingHidden(true); }} aria-label="Open drop-down menu" aria-controls="drop-down menu" aria-haspopup="true"><img src={iconHamburger} aria-hidden="true" /></button>
-                <h1>room</h1>
+                <p>room</p>
                 <div className="hidden_alignment_container w-5 h-6" aria-hidden="true"></div>
             </div>
 
@@ -43,11 +48,10 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
     )
 }
 
-export default function Header() {
+export default function Header({index, setIndex}: HeaderProps) {
     const [isMenuHidden, setIsMenuHidden] = useState(true);
     const [isHeadingHidden, setIsHeadingHidden] = useState(false);
     const galleryList = ["bg-[url(src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-3.jpg)]"];
-    const [index, setIndex] = useState(0);
 
     return (
         <header className="max-md:h-90 -m-10">

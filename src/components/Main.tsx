@@ -1,39 +1,64 @@
 import iconArrow from '../assets/images/icon-arrow.svg';
+import aboutLight from '../assets/images/image-about-light.jpg';
+import aboutDark from '../assets/images/image-about-dark.jpg';
 import data from '../utils/data.json';
 import { useState } from 'react';
 
 interface LayoutProps {
+    index: number;
+    setIndex: Function;
     sectionContent: Array<{ heading: string, body: string}>;
     setSectionContent: Function;
 }
 
-function PhoneMain({sectionContent, setSectionContent}: LayoutProps) {
+interface MainProps {
+    index: number;
+    setIndex: Function;
+}
+
+function PhoneMain({index, setIndex, sectionContent, setSectionContent}: LayoutProps) {
     return (
-        <section>
-            {
-                sectionContent.map((item, indexVal) => {
-                    return (
-                        <div key={indexVal} className="flex flex-col gap-5">
-                            <h2 className="text-3xl font-bold">{item.heading}</h2>
-                            <p className="text-gray-500">{item.body}</p>
-                            <div className="flex gap-5">
-                                <h3 className="tracking-[.8em] uppercase font-semibold">Shop now</h3>
-                                <button aria-label="Go to section to shop"><img src={iconArrow} aria-hidden="true" /></button>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-        </section>
+        <div className="grid gap-20">
+            <section>
+                <div key={index} className="flex flex-col gap-5">
+                    <h1 className="text-3xl font-bold">{sectionContent[index].heading}</h1>
+                    <p className="text-gray-500">{sectionContent[index].body}</p>
+                    <div className="flex gap-5">
+                        <p className="tracking-[.8em] uppercase font-semibold">Shop now</p>
+                        <button aria-label="Go to section to shop"><img src={iconArrow} aria-hidden="true" /></button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="grid gap-10">
+                <div className="img-container -ml-10 -mr-10">
+                    <img src={aboutDark} alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
+                </div>
+
+                <div className="flex flex-col gap-5">
+                    <h2 className="text-sm uppercase font-bold tracking-widest">about our furniture</h2>
+                    <p className="text-gray-500">
+                        Our multifunctional collection blends design and function to suit your individual taste. Make each room unique, or pick a cohesive theme that best express your interets and what inspires you.
+                        Find the furniture pieces you need, from traditional to contemporary styles or anything in between. Product specialists are available to help you create your dream space.
+                    </p>
+                </div>
+
+                <div className="img-container -ml-10 -mr-10">
+                    <img src={aboutLight} alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
+                </div>
+            </section>
+        </div>
     )
 }
 
-export default function Main() {
+export default function Main({index, setIndex}: MainProps) {
     const [sectionContent, setSectionContent] = useState(data);
 
     return (
         <main>
             <PhoneMain 
+                index={index}
+                setIndex={setIndex}
                 sectionContent={sectionContent}
                 setSectionContent={setSectionContent}
             />
