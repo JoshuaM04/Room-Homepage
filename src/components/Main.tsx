@@ -2,7 +2,6 @@ import iconArrow from '../assets/images/icon-arrow.svg';
 import aboutLight from '../assets/images/image-about-light.jpg';
 import aboutDark from '../assets/images/image-about-dark.jpg';
 import data from '../utils/data.json';
-import { useState } from 'react';
 
 interface LayoutProps {
     index: number;
@@ -49,7 +48,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
 }
 
 export default function Main({index}: MainProps) {
-    const [sectionContent, setSectionContent] = useState(data);
+    const sectionContent = [...data];
 
     return (
         <main>
