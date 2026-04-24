@@ -43,7 +43,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Live Site URL: [Vercel](https://vercel.com/joshuam04s-projects/room-homepage)
+- Live Site URL: [Vercel](https://room-homepage-one-hazel.vercel.app/)
 
 ## My process
 
