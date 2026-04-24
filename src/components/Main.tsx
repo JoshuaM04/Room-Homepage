@@ -28,7 +28,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
 
             <section className="grid gap-10">
                 <div className="img-container -ml-10 -mr-10">
-                    <img src={aboutDark} alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
+                    <img src={aboutDark} className="w-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
                 </div>
 
                 <div className="flex flex-col gap-5">
@@ -40,7 +40,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
                 </div>
 
                 <div className="img-container -ml-10 -mr-10">
-                    <img src={aboutLight} alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
+                    <img src={aboutLight} className="w-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
                 </div>
             </section>
         </div>

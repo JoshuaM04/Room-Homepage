@@ -7,7 +7,7 @@ export default function App() {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="parent_container grid auto-rows-min gap-20 p-10 min-h-dvh box-sizing">
+    <div className="parent_container grid auto-rows-min gap-20 pt-10 pr-10 pl-10 min-h-dvh box-sizing">
       <Header 
         index={index}
         setIndex={setIndex}
