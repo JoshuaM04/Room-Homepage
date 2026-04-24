@@ -23,7 +23,7 @@ interface HeaderProps {
 function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadingHidden, galleryList, index, setIndex}: LayoutProps) {
     return (
         <section className={`[ header_parent_container ] [ p-5 ] [ h-full ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}>
-            <nav id="drop-down menu" className="[ flex items-center justify-between ] [ bg-white ] [ p-[40px_20px_40px_20px] -m-5 ]" hidden={isMenuHidden} aria-hidden={isMenuHidden} aria-expanded={!(isMenuHidden)}>
+            <dialog id="drop-down menu" className="[ flex items-center justify-between ] [ bg-white ] [ p-[40px_20px_40px_20px] -m-5 ]" hidden={isMenuHidden} aria-hidden={isMenuHidden} aria-expanded={!(isMenuHidden)}>
                 <button onClick={() => { setIsMenuHidden(true); setIsHeadingHidden(false); }} aria-controls="drop-down menu" aria-label="Close drop-down menu"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></button>
 
                 <ul className="[ inline-flex gap-6 ] [ font-bold ]">
@@ -32,7 +32,7 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
                     <li>about</li>
                     <li>contact</li>
                 </ul>
-            </nav>
+            </dialog>
             
             <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]" hidden={isHeadingHidden} aria-hidden={isHeadingHidden}>
                 <button onClick={() => { setIsMenuHidden(false); setIsHeadingHidden(true); }} aria-label="Open drop-down menu" aria-controls="drop-down menu" aria-haspopup="true"><img src={iconHamburger} aria-hidden="true" /></button>
@@ -51,10 +51,10 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
 export default function Header({index, setIndex}: HeaderProps) {
     const [isMenuHidden, setIsMenuHidden] = useState(true);
     const [isHeadingHidden, setIsHeadingHidden] = useState(false);
-    const galleryList = ["bg-[url(src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(src/assets/images/mobile-image-hero-3.jpg)]"];
+    const galleryList = ["bg-[url(../src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-3.jpg)]"];
 
     return (
-        <header className="max-md:h-90 -m-10">
+        <header className="h-[96vw] m-[-40px_-40px_0_-40px]">
             <PhoneHeader 
                 isMenuHidden={isMenuHidden}
                 setIsMenuHidden={setIsMenuHidden}
