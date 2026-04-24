@@ -6,17 +6,14 @@ import { useState } from 'react';
 
 interface LayoutProps {
     index: number;
-    setIndex: Function;
     sectionContent: Array<{ heading: string, body: string}>;
-    setSectionContent: Function;
 }
 
 interface MainProps {
     index: number;
-    setIndex: Function;
 }
 
-function PhoneMain({index, setIndex, sectionContent, setSectionContent}: LayoutProps) {
+function PhoneMain({index, sectionContent}: LayoutProps) {
     return (
         <div className="grid gap-20">
             <section>
@@ -51,16 +48,14 @@ function PhoneMain({index, setIndex, sectionContent, setSectionContent}: LayoutP
     )
 }
 
-export default function Main({index, setIndex}: MainProps) {
+export default function Main({index}: MainProps) {
     const [sectionContent, setSectionContent] = useState(data);
 
     return (
         <main>
             <PhoneMain 
                 index={index}
-                setIndex={setIndex}
                 sectionContent={sectionContent}
-                setSectionContent={setSectionContent}
             />
         </main>
     )

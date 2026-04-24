@@ -14,7 +14,6 @@ export default function App() {
       />
       <Main 
         index={index}
-        setIndex={setIndex}
       />
       <Footer />
     </div>
