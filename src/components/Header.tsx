@@ -7,13 +7,8 @@ import {DialogTrigger} from 'react-aria-components/Modal';
 import {Modal} from '../utils/Header/Modal.tsx';
 import {Dialog} from '../utils/Header/Dialog.tsx';
 import {Button} from '../utils/Header/Button.tsx';
-import { useState } from 'react';
 
 interface LayoutProps {
-    isMenuHidden: boolean;
-    setIsMenuHidden: Function;
-    isHeadingHidden: boolean;
-    setIsHeadingHidden: Function;
     galleryList: Array<string>;
     index: number;
     setIndex: Function;
@@ -24,7 +19,7 @@ interface HeaderProps {
     setIndex: Function;
 }
 
-function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadingHidden, galleryList, index, setIndex}: LayoutProps) {
+function PhoneHeader({galleryList, index, setIndex}: LayoutProps) {
     return (
         <div className={`[ header_parent_container ] [ p-5 ] [ h-full ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ]`}> 
                 <DialogTrigger>
@@ -33,12 +28,12 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
                         <p>room</p>
                         <div className="hidden_alignment_container w-5 h-6" aria-hidden="true"></div>
                     </div>
-                    <Modal>
+                    <Modal isDismissable>
                         <Dialog>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center gap-5">
                                 <Button slot="close"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></Button>
                                 <nav>
-                                    <ul className="[ inline-flex gap-6 ] [ font-bold ]">
+                                    <ul className="[ inline-flex gap-5 text-black ] [ font-bold ]">
                                         <li>home</li>
                                         <li>shop</li>
                                         <li>about</li>
@@ -59,17 +54,11 @@ function PhoneHeader({isMenuHidden, setIsMenuHidden, isHeadingHidden, setIsHeadi
 }
 
 export default function Header({index, setIndex}: HeaderProps) {
-    const [isMenuHidden, setIsMenuHidden] = useState(true);
-    const [isHeadingHidden, setIsHeadingHidden] = useState(false);
     const galleryList = ["bg-[url(../src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-3.jpg)]"];
 
     return (
         <header className="h-[96vw] m-[-40px_-40px_0_-40px]">
             <PhoneHeader 
-                isMenuHidden={isMenuHidden}
-                setIsMenuHidden={setIsMenuHidden}
-                isHeadingHidden={isHeadingHidden}
-                setIsHeadingHidden={setIsHeadingHidden}
                 galleryList={galleryList}
                 index={index}
                 setIndex={setIndex}
