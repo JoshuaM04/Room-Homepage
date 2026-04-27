@@ -20,7 +20,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
                     <h1 className="text-3xl font-bold">{sectionContent[index].heading}</h1>
                     <p className="text-gray-500">{sectionContent[index].body}</p>
                     <div className="flex gap-5">
-                        <p className="tracking-[.8em] uppercase font-semibold">Shop now</p>
+                        <p className="tracking-[.8em] uppercase font-semibold"><a href="">Shop now</a></p>
                         <button aria-label="Go to section to shop"><img src={iconArrow} aria-hidden="true" /></button>
                     </div>
                 </div>
