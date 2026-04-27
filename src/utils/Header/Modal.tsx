@@ -28,7 +28,7 @@ const modalStyles = tv({
 export function Modal(props: ModalOverlayProps) {
   return (
     <ModalOverlay {...props} className={overlayStyles}>
-      <div className="sticky top-0 left-0 flex items-center justify-center box-border ">
+      <div className="sticky top-0 left-0 flex items-center justify-center box-border">
         <RACModal {...props} className={modalStyles} />
       </div>
     </ModalOverlay>
