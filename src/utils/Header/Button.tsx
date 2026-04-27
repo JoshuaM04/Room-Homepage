@@ -1,4 +1,3 @@
-import React from 'react';
 import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import { Button as RACButton, type ButtonProps as RACButtonProps } from 'react-aria-components/Button';
 import { tv } from 'tailwind-variants';
