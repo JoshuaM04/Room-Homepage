@@ -34,10 +34,10 @@ function PhoneHeader({galleryList, index, setIndex}: LayoutProps) {
                                 <Button slot="close"><img src={iconClose} className="min-w-4 h-4" aria-hidden="true" /></Button>
                                 <nav>
                                     <ul className="[ inline-flex gap-5 text-black ] [ font-bold ]">
-                                        <li>home</li>
-                                        <li>shop</li>
-                                        <li>about</li>
-                                        <li>contact</li>
+                                        <li><a href="">home</a></li>
+                                        <li><a href="">shop</a></li>
+                                        <li><a href="">abou</a>t</li>
+                                        <li><a href="">contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
