@@ -14,7 +14,7 @@ interface MainProps {
 
 function PhoneMain({index, sectionContent}: LayoutProps) {
     return (
-        <div className="[ grid gap-20 ] [ lg:hidden lg:aria-hidden ]">
+        <div className="[ lg:hidden lg:aria-hidden ] [ grid gap-20 ]">
             <section>
                 <div key={index} className="flex flex-col gap-5">
                     <h1 className="text-3xl font-bold">{sectionContent[index].heading}</h1>
@@ -49,8 +49,8 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
 
 function DesktopMain() {
     return (
-        <div className="max-lg:hidden max-lg:aria-hidden -ml-10 -mr-10 h-fit grid grid-cols-[55vw_45vw]">
-            <div className="grid grid-cols-2">
+        <div className="[ max-lg:hidden max-lg:aria-hidden ] [ h-fit ] [ grid grid-cols-[2fr_1fr] ]">
+            <div className="grid grid-cols-[1fr_2fr]">
                 <div className="img-container">
                     <img src={aboutDark} className="size-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
                 </div>
@@ -63,7 +63,7 @@ function DesktopMain() {
                 </div>
             </div>
 
-            <div className="img-container">
+            <div className="img-container w-fit">
                 <img src={aboutLight} className="size-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
             </div>
         </div>
@@ -74,7 +74,7 @@ export default function Main({index}: MainProps) {
     const sectionContent = [...data];
 
     return (
-        <main>
+        <main className="lg:-mr-10 lg:-ml-10">
             <PhoneMain 
                 index={index}
                 sectionContent={sectionContent}

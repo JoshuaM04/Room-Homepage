@@ -9,7 +9,7 @@ function PhoneFooter() {
 
 export default function Footer() {
     return (
-        <footer className="attribution flex flex-col justify-center -ml-10 -mr-10 p-5 text-center text-white bg-black relative bottom-0 lg:relative lg:bottom-0 lg:-ml-10 lg:-mr-10 lg:h-[10vh]">
+        <footer className="[ attribution ] [ flex flex-col justify-center ] [ -ml-10 -mr-10 p-5 ] [ text-center text-white ] [ bg-black ] [ relative bottom-0 ] [ lg:-ml-10 lg:-mr-10 lg:text-xl ]">
             <PhoneFooter />
         </footer>
     )

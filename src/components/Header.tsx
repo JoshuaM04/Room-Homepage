@@ -11,13 +11,13 @@ import {Button} from '../utils/Header/Button.tsx';
 import data from '../utils/data.json';
 
 interface MobileProps {
-    galleryList: Array<string>;
+    mobileGalleryList: Array<string>;
     index: number;
     setIndex: Function;
 }
 
 interface DesktopProps {
-    galleryList: Array<string>;
+    desktopGalleryList: Array<string>;
     index: number;
     setIndex: Function;
     sectionContent: Array<{ heading: string, body: string}>;
@@ -28,9 +28,9 @@ interface HeaderProps {
     setIndex: Function;
 }
 
-function PhoneHeader({galleryList, index, setIndex}: MobileProps) {
+function PhoneHeader({mobileGalleryList, index, setIndex}: MobileProps) {
     return (
-        <div className={`[ mobile_header_parent_container ] [ p-5 ] [ h-full ] [ ${galleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ] [ lg:hidden lg:aria-hidden ]`}> 
+        <div className={`[ mobile_header_parent_container ] [ p-5 ] [ h-full ] [ ${mobileGalleryList[index]} bg-center bg-no-repeat bg-cover ] [ relative ] [ lg:hidden lg:aria-hidden ]`}> 
                 <DialogTrigger>
                     <div className="[ flex justify-between ] [ text-white font-semibold text-2xl ] [ w-full h-10 ]">
                         <Button><img src={iconHamburger} aria-hidden="true" /></Button>
@@ -62,14 +62,16 @@ function PhoneHeader({galleryList, index, setIndex}: MobileProps) {
     )
 }
 
-function DesktopHeader({galleryList, index, setIndex, sectionContent}: DesktopProps) {
+function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent}: DesktopProps) {
     return (
-        <div className="[ desktop_header_parent_container ] [ grid grid-cols-[55vw_45vw] ] [ h-[60.3vh] ] [ max-lg:hidden max-lg:aria-hidden ]">
-            <section className={` p-10 [ ${galleryList[index]} bg-center bg-no-repeat bg-cover`}>
-                <div className="flex justify-left items-center gap-20 text-white w-full">
-                    <p className="text-2xl font-semibold">room</p>
+        <div className="[ desktop_header_parent_container ] [ grid grid-cols-[2fr_1fr] ] [ max-lg:hidden max-lg:aria-hidden ]">
+            <section>
+                <img src={`${desktopGalleryList[index]}`} className="size-full" />
+                
+                <div className="flex justify-center items-center gap-20 text-white absolute top-0 left-0 m-15">
+                    <p className="text-3xl font-semibold">room</p>
                     <nav>
-                        <ul className="inline-flex gap-10">
+                        <ul className="inline-flex gap-10 text-lg">
                             <li><a href="">home</a></li>
                             <li><a href="">shop</a></li>
                             <li><a href="">abou</a>t</li>
@@ -99,18 +101,19 @@ function DesktopHeader({galleryList, index, setIndex, sectionContent}: DesktopPr
 }
 
 export default function Header({index, setIndex}: HeaderProps) {
-    const galleryList = ["bg-[url(../src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-3.jpg)]"];
+    const mobileGalleryList = ["bg-[url(../src/assets/images/mobile-image-hero-1.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-2.jpg)]", "bg-[url(../src/assets/images/mobile-image-hero-3.jpg)]"];
+    const desktopGalleryList = ["../src/assets/images/desktop-image-hero-1.jpg", "../src/assets/images/desktop-image-hero-2.jpg", "../src/assets/images/desktop-image-hero-3.jpg"];
     const sectionContent = [...data];
 
     return (
         <header className="h-[96vw] m-[-40px_-40px_0_-40px] lg:h-fit">
             <PhoneHeader 
-                galleryList={galleryList}
+                mobileGalleryList={mobileGalleryList}
                 index={index}
                 setIndex={setIndex}
             />
             <DesktopHeader
-                galleryList={galleryList}
+                desktopGalleryList={desktopGalleryList}
                 index={index}
                 setIndex={setIndex}
                 sectionContent={sectionContent}
