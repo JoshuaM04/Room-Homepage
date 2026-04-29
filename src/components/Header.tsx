@@ -105,8 +105,8 @@ function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent}: De
 }
 
 export default function Header({index, setIndex}: HeaderProps) {
-    const mobileGalleryList = ["src/assets/images/mobile-image-hero-1.jpg", "src/assets/images/mobile-image-hero-2.jpg", "src/assets/images/mobile-image-hero-3.jpg"];
-    const desktopGalleryList = ["src/assets/images/desktop-image-hero-1.jpg", "src/assets/images/desktop-image-hero-2.jpg", "src/assets/images/desktop-image-hero-3.jpg"];
+    const mobileGalleryList = ["/gallery/mobile-image-hero-1.jpg", "/gallery/mobile-image-hero-2.jpg", "/gallery/mobile-image-hero-3.jpg"];
+    const desktopGalleryList = ["/gallery/desktop-image-hero-1.jpg", "/gallery/desktop-image-hero-2.jpg", "/gallery/desktop-image-hero-3.jpg"];
     const sectionContent = [...data];
 
     return (
