@@ -14,8 +14,8 @@ interface MainProps {
 
 function PhoneMain({index, sectionContent}: LayoutProps) {
     return (
-        <div className="[ lg:hidden lg:aria-hidden ] [ grid gap-20 ]">
-            <section>
+        <div className="[ lg:hidden lg:aria-hidden ] [ grid gap-5 ]">
+            <section className="p-10">
                 <div key={index} className="flex flex-col gap-5">
                     <h1 className="text-3xl font-bold">{sectionContent[index].heading}</h1>
                     <p className="text-gray-500">{sectionContent[index].body}</p>
@@ -26,12 +26,12 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
                 </div>
             </section>
 
-            <section className="grid gap-10">
-                <div className="img-container -ml-10 -mr-10">
+            <section className="grid gap-5">
+                <div className="img-container">
                     <img src={aboutDark} className="w-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
                 </div>
 
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 p-10">
                     <h2 className="text-sm uppercase font-bold tracking-widest">about our furniture</h2>
                     <p className="text-gray-500">
                         Our multifunctional collection blends design and function to suit your individual taste. Make each room unique, or pick a cohesive theme that best express your interets and what inspires you.
@@ -39,7 +39,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
                     </p>
                 </div>
 
-                <div className="img-container -ml-10 -mr-10">
+                <div className="img-container">
                     <img src={aboutLight} className="w-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
                 </div>
             </section>
@@ -49,7 +49,7 @@ function PhoneMain({index, sectionContent}: LayoutProps) {
 
 function DesktopMain() {
     return (
-        <div className="[ max-lg:hidden max-lg:aria-hidden ] [ h-fit ] [ grid grid-cols-[2fr_1fr] ]">
+        <div className="[ max-lg:hidden max-lg:aria-hidden ] [ grid grid-cols-[2fr_1fr] ]">
             <div className="grid grid-cols-[1fr_2fr]">
                 <div className="img-container">
                     <img src={aboutDark} className="size-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
@@ -63,7 +63,7 @@ function DesktopMain() {
                 </div>
             </div>
 
-            <div className="img-container w-fit">
+            <div className="img-container">
                 <img src={aboutLight} className="size-full" alt="A dimly-lit lounging area with chairs, a table with a bowl, and a bed in the background." />
             </div>
         </div>
@@ -74,7 +74,7 @@ export default function Main({index}: MainProps) {
     const sectionContent = [...data];
 
     return (
-        <main className="lg:-mr-10 lg:-ml-10">
+        <main>
             <PhoneMain 
                 index={index}
                 sectionContent={sectionContent}

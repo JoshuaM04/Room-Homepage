@@ -1,13 +1,12 @@
 import Header from "./components/Header.tsx";
 import Main from "./components/Main.tsx";
-import Footer from "./components/Footer.tsx";
 import { useState } from 'react';
 
 export default function App() {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="parent_container grid auto-rows-min gap-20 lg:gap-0 lg:grid-rows-[3fr_2fr_1fr] pt-10 pr-10 pl-10 min-h-dvh box-sizing">
+    <div className="[ parent_container ] [ grid auto-rows-min gap-5 ] [ min-h-dvh ] [ box-sizing ] [ lg:gap-0 ]">
       <Header 
         index={index}
         setIndex={setIndex}
@@ -15,7 +14,6 @@ export default function App() {
       <Main 
         index={index}
       />
-      <Footer />
     </div>
   )
 }
