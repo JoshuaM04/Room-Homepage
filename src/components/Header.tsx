@@ -14,6 +14,7 @@ interface MobileProps {
     mobileGalleryList: Array<string>;
     index: number;
     setIndex: Function;
+    altText: Array<string>;
 }
 
 interface DesktopProps {
@@ -21,6 +22,7 @@ interface DesktopProps {
     index: number;
     setIndex: Function;
     sectionContent: Array<{ heading: string, body: string}>;
+    altText: Array<string>;
 }
 
 interface HeaderProps {
@@ -28,10 +30,10 @@ interface HeaderProps {
     setIndex: Function;
 }
 
-function PhoneHeader({mobileGalleryList, index, setIndex}: MobileProps) {
+function PhoneHeader({mobileGalleryList, index, setIndex, altText}: MobileProps) {
     return (
-        <div className={`[ mobile_header_parent_container ] [ lg:hidden lg:aria-hidden ] [ relative ]`}>
-                <img src={`${mobileGalleryList[index]}`} className="size-full" />
+        <div className={`[ mobile_header_parent_container ] [ xl:hidden xl:aria-hidden ] [ relative ]`}>
+                <img src={`${mobileGalleryList[index]}`} alt={`${altText[index]}`} className="size-full" />
 
                 <div className="[ absolute top-0 left-0 ] [ m-5 ]">
                     <DialogTrigger>
@@ -66,11 +68,11 @@ function PhoneHeader({mobileGalleryList, index, setIndex}: MobileProps) {
     )
 }
 
-function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent}: DesktopProps) {
+function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent, altText}: DesktopProps) {
     return (
-        <div className="[ max-lg:hidden max-lg:aria-hidden ] [ grid grid-cols-[2fr_1fr] ]">
+        <div className="[ max-xl:hidden max-xl:aria-hidden ] [ grid grid-cols-[2fr_1fr] ]">
             <section>
-                <img src={`${desktopGalleryList[index]}`} className="size-full" />
+                <img src={`${desktopGalleryList[index]}`} alt={`${altText[index]}`} className="size-full" />
                 
                 <div className="flex justify-center items-end gap-20 text-white absolute top-0 left-0 m-15">
                     <p className="text-3xl font-semibold">room</p>
@@ -89,10 +91,7 @@ function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent}: De
                 <div key={index} className="flex flex-col gap-5 place-self-center">
                     <h1 className="text-3xl font-bold">{sectionContent[index].heading}</h1>
                     <p className="text-gray-500">{sectionContent[index].body}</p>
-                    <div className="flex gap-5">
-                        <p className="tracking-[.5em] uppercase font-semibold"><a href="">Shop now</a></p>
-                        <button aria-label="Go to section to shop"><img src={iconArrow} aria-hidden="true" /></button>
-                    </div>
+                    <a href="" className="[ flex gap-5 tracking-[.5em] ] [ uppercase font-semibold ]">Shop now <img src={iconArrow} className="min-w-15" aria-hidden="true" /></a>
                 </div>
 
                 <div className="[ flex ] [ w-fit ] [ absolute bottom-0 ]">
@@ -107,6 +106,7 @@ function DesktopHeader({desktopGalleryList, index, setIndex, sectionContent}: De
 export default function Header({index, setIndex}: HeaderProps) {
     const mobileGalleryList = ["/gallery/mobile-image-hero-1.jpg", "/gallery/mobile-image-hero-2.jpg", "/gallery/mobile-image-hero-3.jpg"];
     const desktopGalleryList = ["/gallery/desktop-image-hero-1.jpg", "/gallery/desktop-image-hero-2.jpg", "/gallery/desktop-image-hero-3.jpg"];
+    const altText = ["Two white chairs seated at a table with a small plant within a bright room.", "A yellow chair amongst beige chairs aligned in rows.", "A side-view of a black chair by itself in a gray room."]
     const sectionContent = [...data];
 
     return (
@@ -115,12 +115,14 @@ export default function Header({index, setIndex}: HeaderProps) {
                 mobileGalleryList={mobileGalleryList}
                 index={index}
                 setIndex={setIndex}
+                altText={altText}
             />
             <DesktopHeader
                 desktopGalleryList={desktopGalleryList}
                 index={index}
                 setIndex={setIndex}
                 sectionContent={sectionContent}
+                altText={altText}
             />
         </header>
     )
